@@ -8,7 +8,7 @@
 #include <conio.h>
 #include <assert.h>
 
-REG_R16 R16_MR_QINFO(123);
+
 
 int REG::defCallback(int v)
 {
@@ -25,53 +25,7 @@ int REG::operator[](int regaddr)
 	return 0;
 }
 
-REG& operator+=(REG a, REG b)
-{
-	printf("1 operator+=\n");
-	return a;
-}
 
-REG& operator+=(REG a, int i)
-{
-	printf("2 operator+=\n");
-	return a;
-}
-
-REG& operator-=(REG a, REG b)
-{
-	printf("3 operator-=\n");
-	return a;
-}
-
-REG& operator-=(REG a, int i)
-{
-	printf("4 operator-=\n");
-	return a;
-}
-
-REG& operator|=(REG a, REG b)
-{
-	printf("5 operator|=\n");
-	return a;
-}
-
-REG& operator|=(REG a, int i)
-{
-	printf("6 operator|=\n");
-	return a;
-}
-
-REG& operator&=(REG a, REG b)
-{
-	printf("7 operator&=\n");
-	return a;
-}
-
-REG& operator&=(REG a, int i)
-{
-	printf("8 operator&=\n");
-	return a;
-}
 
 // init cmodel register default value
 int initCmodelReg() {
@@ -81,6 +35,9 @@ int initCmodelReg() {
 
 // init cmodel memory space
 int initCmodelMem() {
+	// allocate register space
+	R16_MR_QINFO._pR16_mem = new int[100];
+	R16_MR_QINFO.regIdx = 0;
 
 	return 0;
 }

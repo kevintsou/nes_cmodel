@@ -5,6 +5,8 @@
 #include <conio.h>
 #include <assert.h>
 
+REG_R16 R16_MR_QINFO(123);
+
 REG_R16::REG_R16(int inv) :_inv(inv) {
 	_pOPRFunc = NULL;
 	printf("new object HWREG with initial %d\n", _inv);
@@ -40,18 +42,20 @@ unsigned char REG_R16::callfun2(unsigned char v)
 //assign value to register
 int REG_R16::operator=(int v) {
 	printf("set Value %d\n", v);
+	this->_pR16_mem[this->regIdx] = v;
 	return (*this.*_pOPRFunc)(v);
 }
 
 //use signed int as read operator
 int REG_R16::operator[](int regaddr) {
-	printf("get Value %d\n", regaddr);
-	return regaddr;
+	this->regIdx = regaddr;
+	return this->_pR16_mem[this->regIdx];
 }
 
 //use unsigned int as write operator
 REG_R16& REG_R16::operator[](unsigned int addr) {
 	//printf("REG_R16[%d] function\n", addr);
+	this->regIdx = addr;
 	switch (addr)
 	{
 	case 1:
@@ -70,15 +74,30 @@ REG_R16& REG_R16::operator[](unsigned int addr) {
 	return *this;
 }
 
-REG& REG_R16::operator++(int addr)
+REG& REG_R16::operator|=(REG b)
 {
-	printf("REG_R16[%d]++ function\n", addr);
+	this->_pR16_mem[this->regIdx] |= b._pR16_mem[b.regIdx];
+	printf("[|=] this->_pR16_mem[0x%x] = 0x%x\n", this->regIdx, this->_pR16_mem[this->regIdx]);
 	return *this;
 }
 
-REG& REG_R16::operator--(int addr)
+REG& REG_R16::operator|=(int i)
 {
-	printf("REG_R16[%d]-- function\n", addr);
+	this->_pR16_mem[this->regIdx] |= i;
+	printf("[|=] this->_pR16_mem[0x%x] = 0x%x\n", this->regIdx, this->_pR16_mem[this->regIdx]);
 	return *this;
 }
 
+REG& REG_R16::operator&=(REG b)
+{
+	this->_pR16_mem[this->regIdx] &= b._pR16_mem[b.regIdx];
+	printf("[&=] this->_pR16_mem[0x%x] = 0x%x\n", this->regIdx, this->_pR16_mem[this->regIdx]);
+	return *this;
+}
+
+REG& REG_R16::operator&=(int i)
+{
+	this->_pR16_mem[this->regIdx] &= i;
+	printf("[&=] this->_pR16_mem[0x%x] = 0x%x\n", this->regIdx, this->_pR16_mem[this->regIdx]);
+	return *this;
+}
