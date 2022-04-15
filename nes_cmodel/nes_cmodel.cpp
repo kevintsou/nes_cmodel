@@ -8,6 +8,8 @@
 #include <conio.h>
 #include <assert.h>
 
+REG_R16 R16_MR_QINFO(123);
+
 int REG::defCallback(int v)
 {
 	return 0;
@@ -69,4 +71,16 @@ REG& operator&=(REG a, int i)
 {
 	printf("8 operator&=\n");
 	return a;
+}
+
+// init cmodel register default value
+int initCmodelReg() {
+
+	return 0;
+}
+
+// init cmodel memory space
+int initCmodelMem() {
+
+	return 0;
 }
