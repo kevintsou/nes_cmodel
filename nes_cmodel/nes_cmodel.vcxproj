@@ -155,6 +155,7 @@ copy /Y "$(SolutionDir)nes_cmodel\nes_cmodel.h" "..\..\nes_fw\nes_fw"</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="dmareg.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="nes_cmodel.h" />
     <ClInclude Include="pch.h" />

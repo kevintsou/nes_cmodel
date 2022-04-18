@@ -9,6 +9,7 @@
 #include <assert.h>
 
 
+
 int REG::defCallback(int v)
 {
 	return 0;
@@ -35,8 +36,10 @@ int initCmodelReg() {
 // init cmodel memory space
 int initCmodelMem() {
 	// allocate register space
-	R16_MR_QINFO._pReg_mem = new int[100];
+	R16_MR_QINFO._pReg_mem = new char[1000];
 	R16_MR_QINFO.regIdx = 0;
 
+	DMAREG._pReg_mem = new char[1000];
+	DMAREG.regIdx = 0;
 	return 0;
 }

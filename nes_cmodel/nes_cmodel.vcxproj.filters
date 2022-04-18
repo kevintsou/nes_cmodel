@@ -24,6 +24,9 @@
     <ClInclude Include="nes_cmodel.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="dmareg.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="nes_cmodel.cpp">
