@@ -35,5 +35,8 @@
     <ClCompile Include="reg_r16.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="dmareg.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

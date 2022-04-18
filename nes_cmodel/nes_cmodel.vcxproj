@@ -160,6 +160,7 @@ copy /Y "$(SolutionDir)nes_cmodel\nes_cmodel.h" "..\..\nes_fw\nes_fw"</Command>
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="dmareg.cpp" />
     <ClCompile Include="nes_cmodel.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
