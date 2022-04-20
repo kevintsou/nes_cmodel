@@ -25,21 +25,22 @@ int REG::operator[](int regaddr)
 	return 0;
 }
 
-
+// memory BAR address
+int* mem_bar = new int[0x29600UL];
+int* buf_bar = new int[0x29600UL];
 
 // init cmodel register default value
 int initCmodelReg() {
-
-	return 0;
-}
-
-// init cmodel memory space
-int initCmodelMem() {
 	// allocate register space
 	R16_MR_QINFO._pReg_mem = new char[1000];
 	R16_MR_QINFO.regIdx = 0;
 
 	DMAREG._pReg_mem = new char[1000];
 	DMAREG.regIdx = 0;
+	return 0;
+}
+
+// init cmodel memory space
+int initCmodelMem() {
 	return 0;
 }
